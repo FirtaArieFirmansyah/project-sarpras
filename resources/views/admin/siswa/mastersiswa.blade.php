@@ -7,11 +7,9 @@
         @foreach($siswas as $siswa)
                 <li>NISN : {{ $siswa->nisn }}</li>
                 <li>Nama : {{ $siswa->nama_siswa }}</li>
-                <li>Alamat : {{ $siswa->kelas }}</li>
-                <li>Email : {{ $siswa->jurusan }}</li>
                 <li>Jenis Kelamin : {{ $siswa->jk }}</li>
-                <li>Foto : {{ $siswa->foto }}</li>
-                <li>About : {{ $siswa->about }}</li>
+                <li>Kelas : {{ $siswa->kelas }}</li>
+                <li>Jurusan : {{ $siswa->jurusan }}</li>
                 <br>
         @endforeach
     </ul>
@@ -24,7 +22,7 @@
     <section>
         <div class="card-body">
             <div class="table-responsive">
-                <a href="{{route('mastersiswa.create')}}" class="btn btn-primary mb-4">+ Tambah Data</a>
+                <a href="{{route('siswa.create')}}" class="btn btn-primary mb-4">+ Tambah Data</a>
                 <table class="table table-responsive table-bordered table-hover table-stripped"> 
                     <thead>
                         <tr class="text-center text-nowrap">
@@ -32,9 +30,9 @@
                             <th>Nisn</th>
                             <th>Nama</th>
                             <th>Jenis Kelamin</th>
-                            <th>Email</th>
-                            <th>Alamat</th>
-                            <th width="17%">Aksi</th>
+                            <th>Kelas</th>
+                            <th>Jurusan</th>
+                            <th width="15%">Aksi</th>
                         </tr>
                     </tbody>
                     {{-- @php $no=0; @endphp --}}
@@ -47,18 +45,11 @@
                             <td>{{$siswa->nisn}}</td>
                             <td>{{$siswa->nama}}</td>
                             <td>{{$siswa->jk}}</td>
-                            <td>{{$siswa->email}}</td>
-                            <td>{{$siswa->alamat}}</td>
-                            {{-- <td> 
-                                <img src="{{asset('storage/'. $siswa->foto)}}" alt="" style="display: block;
-                                max-height: 50px;
-                                width: auto;
-                                overflow: hidden;">
-                            </td> --}}
+                            <td>{{$siswa->kelas}}</td>
+                            <td>{{$siswa->jurusan}}</td>
                             <td>
-                                <a href="{{route('mastersiswa.show', $siswa['id'])}}" class="btn btn-success"><i class="fas fa-address-book"></i>&nbspLihat</a>
-                                <a href="{{route('mastersiswa.edit', $siswa['id'])}}" class="btn btn-primary"><i class="fas fa-edit"></i>&nbspEdit</a>
-                                <form action="{{ route('mastersiswa.destroy', $siswa->id) }}" onsubmit="return confirm('Apakah anda yakin menghapusnya??')" method="POST" class="d-inline">
+                                <a href="{{route('siswa.edit', $siswa['id'])}}" class="btn btn-primary"><i class="fas fa-edit"></i>&nbspEdit</a>
+                                <form action="{{ route('siswa.destroy', $siswa->id) }}" onsubmit="return confirm('Apakah anda yakin menghapusnya??')" method="POST" class="d-inline">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger"><i class="fas fa-trash mr-1"></i>Hapus</button>
@@ -68,7 +59,7 @@
                         @endforeach
                         @else 
                         <tr>
-                            <td colspan="7" class="text-center">
+                            <td colspan="6" class="text-center">
                                 Data Siswa Kosong.
                             </td>
                         </tr>
