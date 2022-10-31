@@ -54,7 +54,7 @@ class SiswaController extends Controller
             ], $message );
             
             Siswa::create($validatedData);
-            return redirect('/admin/siswa/mastersiswa');
+            return redirect('/admin/siswa');
     }
 
     /**
@@ -112,6 +112,6 @@ class SiswaController extends Controller
     public function destroy($id)
     {
         Siswa::destroy($id);
-        return redirect('admin/siswa/mastersiswa');
+        return redirect('admin/siswa');
     }
 }
