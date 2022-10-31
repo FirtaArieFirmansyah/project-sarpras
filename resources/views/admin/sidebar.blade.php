@@ -24,8 +24,8 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <li class="nav-item @if(Request::is('admin/mastersiswa')) active @endif">
-                <a class="nav-link" href="/admin/mastersiswa">
+            <li class="nav-item @if(Request::is('admin/siswa')) active @endif">
+                <a class="nav-link" href="/admin/siswa">
                 <i class="fas fa-users"></i>
                 <span>Siswa</span></a>
             </li>
