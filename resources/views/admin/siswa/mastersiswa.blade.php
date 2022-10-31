@@ -48,8 +48,8 @@
                             <td>{{$siswa->kelas}}</td>
                             <td>{{$siswa->jurusan}}</td>
                             <td>
-                             <a href="{{route('siswa.edit', $siswa->nisn)}}" class="btn btn-primary"><i class="fas fa-edit"></i>&nbspEdit</a>
-                             <form action="{{ route('siswa.destroy', $siswa->nisn) }}" onsubmit="return confirm('Apakah anda yakin menghapusnya??')" method="POST" class="d-inline">
+                                <a href="{{route('siswa.edit', $siswa['id'])}}" class="btn btn-primary"><i class="fas fa-edit"></i>&nbspEdit</a>
+                                <form action="{{ route('siswa.destroy', $siswa->id) }}" onsubmit="return confirm('Apakah anda yakin menghapusnya??')" method="POST" class="d-inline">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger"><i class="fas fa-trash mr-1"></i>Hapus</button>
@@ -59,7 +59,7 @@
                         @endforeach
                         @else 
                         <tr>
-                            <td colspan="6" class="text-center">
+                            <td colspan="7" class="text-center">
                                 Data Siswa Kosong.
                             </td>
                         </tr>

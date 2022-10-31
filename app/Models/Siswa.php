@@ -10,14 +10,12 @@ class Siswa extends Model
     use HasFactory;
 protected $fillable = [
     'nisn',
-    'nama',
+    'nama_siswa',
     'jk',
     'kelas',
     'jurusan',
 ];
     protected $table = 'siswa';
-    protected $primaryKey = 'nisn';
-    public $incrementing = false;
     
     public function project(){
         return $this->hasMany('App\Models\Project', 'id_siswa');

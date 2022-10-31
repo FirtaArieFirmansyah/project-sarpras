@@ -32,7 +32,7 @@
             </div>
 
             <div class="mb-3">
-             <label for="nama">Jenis Kelamin</label><br>
+             <label for="jk">Jenis Kelamin</label><br>
               <select name="jk" class="form-control @error('jk') is-invalid @enderror" id="jk" value="{{ old('jk')}}">
                <option selected disabled>Pilih jenis kelamin</option>
                <option value="Laki-laki">Laki - laki</option>

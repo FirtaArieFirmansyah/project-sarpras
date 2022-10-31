@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Siswa;
+use Illuminate\Support\Facades\Storage;
 
 class SiswaController extends Controller
 {
@@ -46,7 +47,7 @@ class SiswaController extends Controller
             ];
             $validatedData = $request->validate([
                 'nisn' => 'required|numeric',
-                'nama' => 'required|min:5',
+                'nama_siswa' => 'required|min:5',
                 'jk' => 'required',
                 'kelas' => 'required',
                 'jurusan' => 'required',
@@ -90,7 +91,7 @@ class SiswaController extends Controller
     {
         $validatedData = $request->validate([
             'nisn' => 'required',
-            'nama' => 'required',
+            'nama_siswa' => 'required',
             'jk' => 'required',
             'kelas' => 'required',
             'jurusan' => 'required',
