@@ -48,10 +48,8 @@ class SiswaController extends Controller
                 'nisn' => 'required|numeric',
                 'nama' => 'required|min:5',
                 'jk' => 'required',
-                'email' => 'required',
-                'alamat' => 'required',
-                'foto' => 'image|file',
-                'about' => 'required',
+                'kelas' => 'required',
+                'jurusan' => 'required',
             ], $message );
             
             Siswa::create($validatedData);
@@ -94,10 +92,8 @@ class SiswaController extends Controller
             'nisn' => 'required',
             'nama' => 'required',
             'jk' => 'required',
-            'email' => 'required',
-            'alamat' => 'required',
-            'foto' => 'image|file',
-            'about' => 'required'
+            'kelas' => 'required',
+            'jurusan' => 'required',
         ]);
 
         $siswas=Siswa::where('id', $id)
