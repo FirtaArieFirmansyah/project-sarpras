@@ -16,6 +16,8 @@ protected $fillable = [
     'jurusan',
 ];
     protected $table = 'siswa';
+    protected $primaryKey = 'nisn';
+    public $incrementing = false;
     
     public function project(){
         return $this->hasMany('App\Models\Project', 'id_siswa');

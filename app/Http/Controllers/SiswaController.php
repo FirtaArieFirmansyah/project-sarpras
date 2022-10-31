@@ -25,7 +25,7 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        return view('tambahsiswa');
+        return view('admin.siswa.tambahsiswa');
     }
 
     /**
@@ -55,7 +55,7 @@ class SiswaController extends Controller
             ], $message );
             
             Siswa::create($validatedData);
-            return redirect('/admin/mastersiswa');
+            return redirect('/admin/siswa/mastersiswa');
     }
 
     /**
@@ -66,9 +66,7 @@ class SiswaController extends Controller
      */
     public function show($id)
     {
-        $siswa = Siswa::find($id);
-        $projek = $siswa->project;
-        return view('showsiswa', ['siswa'=>$siswa,'projek' => $projek]);
+        //
     }
 
     /**
@@ -80,7 +78,7 @@ class SiswaController extends Controller
     public function edit($id)
     {
         $siswa = Siswa::findOrFail($id);
-        return view('editsiswa', ['siswa'=>$siswa]);
+        return view('admin.siswa.editsiswa', ['siswa'=>$siswa]);
     }
 
     /**
@@ -105,7 +103,7 @@ class SiswaController extends Controller
         $siswas=Siswa::where('id', $id)
             ->update($validatedData);
 
-        return redirect()->route('mastersiswa.index')->with('success', 'Data Updated Successfully');
+        return redirect()->route('admin.siswa.mastersiswa.index')->with('success', 'Data Updated Successfully');
     }
 
     /**
@@ -117,6 +115,6 @@ class SiswaController extends Controller
     public function destroy($id)
     {
         Siswa::destroy($id);
-        return redirect('admin/mastersiswa');
+        return redirect('admin/siswa/mastersiswa');
     }
 }
