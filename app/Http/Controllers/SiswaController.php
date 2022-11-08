@@ -90,17 +90,18 @@ class SiswaController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'nisn' => 'required',
-            'nama_siswa' => 'required',
+            'nisn' => 'required|numeric',
+            'nama_siswa' => 'required|min:5',
             'jk' => 'required',
             'kelas' => 'required',
             'jurusan' => 'required',
         ]);
 
-        $siswas=Siswa::where('id', $id)
+        $siswas=Siswa::find($id)
             ->update($validatedData);
 
-        return redirect()->route('admin.siswa.mastersiswa.index')->with('success', 'Data Updated Successfully');
+        //return redirect()->route('admin.siswa.mastersiswa.index')->with('success', 'Data Updated Successfully');
+        return redirect('/admin/siswa');
     }
 
     /**

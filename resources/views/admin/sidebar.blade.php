@@ -39,7 +39,7 @@
            <li class="nav-item @if(Request::is('admin/masterpeminjaman')) active @endif">
                 <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-arrow-left"></i>
+                    <i class="fas fa-arrow-right"></i>
                     <span>Peminjaman</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -53,7 +53,7 @@
             <li class="nav-item @if(Request::is('admin/masterpengembalian')) active @endif">
                 <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseUtilities"
                 aria-expanded="true"  aria-controls="collapseUtilities">
-                <i class="fas fa-arrow-right"></i>
+                <i class="fas fa-arrow-left"></i>
                 <span>Pengembalian</span></a>
 
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">

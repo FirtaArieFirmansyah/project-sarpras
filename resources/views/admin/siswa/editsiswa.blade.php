@@ -8,7 +8,7 @@
         <a href="{{ route('siswa.index') }}" class="btn btn-dark mb-2">Kembali</a>
     <div class="card mb-5">
       <div class="card-body">
-        <form action="{{ route('siswa.update', $siswa->nisn) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('siswa.update', $siswa->id) }}" method="POST" enctype="multipart/form-data">
           @csrf
           @method('PUT')
           <form>

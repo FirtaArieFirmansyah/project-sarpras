@@ -22,7 +22,7 @@
     <section>
         <div class="card-body">
             <div class="table-responsive">
-                <a href="{{route('siswa.create')}}" class="btn btn-primary mb-4">+ Tambah Data</a>
+                <a href="{{route('siswa.create')}}" class="btn btn-success mb-4">+ Tambah Data</a>
                 <table class="table table-responsive table-bordered table-hover table-stripped"> 
                     <thead>
                         <tr class="text-center text-nowrap">
