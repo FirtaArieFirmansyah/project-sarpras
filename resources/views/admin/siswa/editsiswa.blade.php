@@ -44,7 +44,7 @@
             </div>
             <div class="form-group">
               <label for="kelas">Kelas</label>
-              <input type="kelas" name="kelas" class="form-control @error('kelas') is-invalid @enderror" id="kelas" value="{{ $siswa->kelas }}" placeholder="Masukkan kelas siswa..">
+              <input type="text" name="kelas" class="form-control @error('kelas') is-invalid @enderror" id="kelas" value="{{ $siswa->kelas }}" placeholder="Masukkan kelas siswa..">
               @error('kelas')
                 <div class="invalid-feedback">
                   {{ $message }}
