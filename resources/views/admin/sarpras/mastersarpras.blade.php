@@ -14,7 +14,7 @@
                 <table class="table table-responsive table-bordered table-hover table-stripped"> 
                     <thead>
                         <tr class="text-center text-nowrap">
-                            <th>No.</th>
+                            <th width="5%">No.</th>
                             <th>Nama</th>
                             <th>Jenis</th>
                             <th>Jumlah</th>
