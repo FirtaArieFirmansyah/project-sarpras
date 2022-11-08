@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Sarpras;
 
 class SarprasController extends Controller
 {
@@ -13,7 +14,8 @@ class SarprasController extends Controller
      */
     public function index()
     {
-        //
+        $sarprases = Sarpras::all();
+        return view('admin.sarpras.masterasrpras', compact('sarprases'));
     }
 
     /**
@@ -23,7 +25,7 @@ class SarprasController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.sarpras.tambahsarpras');
     }
 
     /**
@@ -34,7 +36,24 @@ class SarprasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = [
+            'required' => ':attribute harus diisi yaa..',
+            'min' => ':attribute minimal :min yaa..',
+            'max' => ':attribute maksimal :max yaa..',
+            'numeric' => ':attribute harus diisi angka yaa..',
+            'mimes' => ':attribute harus bertipe jpg, jpeg, png yaa..',
+            'size' => ':file yang diupload harus maksimal size yaa..',
+            ];
+            $validatedData = $request->validate([
+                'nama_sarpras' => 'required',
+                'jenis_sarpras' => 'required',
+                'jumlah_sarpras' => 'required',
+                'jumlah_terpakai' => 'required',
+                'jumlah_rusak' => 'required',
+            ], $message );
+            
+            Sarpras::create($validatedData);
+            return redirect('/admin/sarpras');
     }
 
     /**
@@ -45,7 +64,7 @@ class SarprasController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -56,7 +75,8 @@ class SarprasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sarpras = Sarpras::findOrFail($id);
+        return view('admin.sarptas.editsarpras', ['sarpras'=>$sarpras]);
     }
 
     /**
@@ -68,7 +88,18 @@ class SarprasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_sarpras' => 'required',
+            'jenis_sarpras' => 'required',
+            'jumlah_sarpras' => 'required',
+            'jumlah_terpakai' => 'required',
+            'jumlah_rusak' => 'required',
+        ]);
+
+        $sarprases = Sarpras::find($id)
+            ->update($validatedData);
+
+        return redirect('/admin/sarpras');
     }
 
     /**
@@ -79,6 +110,7 @@ class SarprasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Sarpras::destroy($id);
+        return redirect('admin/sarpras');
     }
 }

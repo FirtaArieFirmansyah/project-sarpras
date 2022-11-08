@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('sarpras', function (Blueprint $table) {
             $table->id();
-            
+            $table->string('nama_sarpras');
+            $table->string('jenis_sarpras');
+            $table->string('jumlah_sarpras');
+            $table->string('jumlah_terpakai');
+            $table->string('jumlah_rusak');
             $table->timestamps();
         });
     }
