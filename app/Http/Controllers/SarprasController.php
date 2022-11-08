@@ -15,7 +15,7 @@ class SarprasController extends Controller
     public function index()
     {
         $sarprases = Sarpras::all();
-        return view('admin.sarpras.masterasrpras', compact('sarprases'));
+        return view('admin.sarpras.mastersarpras', compact('sarprases'));
     }
 
     /**
@@ -76,7 +76,7 @@ class SarprasController extends Controller
     public function edit($id)
     {
         $sarpras = Sarpras::findOrFail($id);
-        return view('admin.sarptas.editsarpras', ['sarpras'=>$sarpras]);
+        return view('admin.sarpras.editsarpras', ['sarpras'=>$sarpras]);
     }
 
     /**
