@@ -44,8 +44,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/admin/masterdata">Lihat Data</a>
-                        <a class="collapse-item" href="/admin/masterform">Form Peminjaman</a>
+                        <a class="collapse-item" href="/admin/peminjaman">Lihat Data</a>
+                        <a class="collapse-item" href="/admin/peminjaman/create">Form Peminjaman</a>
                     </div>
                 </div>
             </li>

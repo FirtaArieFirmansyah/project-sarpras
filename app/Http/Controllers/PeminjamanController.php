@@ -14,8 +14,8 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        $peminjamans = Peminjaman::all();
-        return view('admin.peminjaman.masterpeminjaman', compact('peminjamans'));
+        $peminjamanes = Peminjaman::all();
+        return view('admin.peminjaman.masterpeminjaman', compact('peminjamanes'));
     }
 
     /**
@@ -36,7 +36,24 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $message = [
+            'required' => ':attribute harus diisi yaa..',
+            'min' => ':attribute minimal :min yaa..',
+            'max' => ':attribute maksimal :max yaa..',
+            'numeric' => ':attribute harus diisi angka yaa..',
+            'mimes' => ':attribute harus bertipe jpg, jpeg, png yaa..',
+            'size' => ':file yang diupload harus maksimal size yaa..',
+            ];
+            $validatedData = $request->validate([
+                'nama_sarpras' => 'required',
+                'jenis_sarpras' => 'required',
+                'jumlah_sarpras' => 'required',
+                'jumlah_terpakai' => 'required',
+                'jumlah_rusak' => 'required',
+            ], $message );
+            
+            Peminjaman::create($validatedData);
+            return redirect('/admin/peminjaman');
     }
 
     /**
@@ -58,7 +75,8 @@ class PeminjamanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $peminjaman = Peminjaman::findOrFail($id);
+        return view('admin.peminjaman.editpeminjaman', ['peminjaman'=>$peminjaman]);
     }
 
     /**
@@ -70,7 +88,18 @@ class PeminjamanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_sarpras' => 'required',
+            'jenis_sarpras' => 'required',
+            'jumlah_sarpras' => 'required',
+            'jumlah_terpakai' => 'required',
+            'jumlah_rusak' => 'required',
+        ]);
+
+        $peminjamanes = Peminjaman::find($id)
+            ->update($validatedData);
+
+        return redirect('/admin/peminjaman');
     }
 
     /**
@@ -81,6 +110,7 @@ class PeminjamanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Peminjaman::destroy($id);
+        return redirect('admin/sarpras');
     }
 }

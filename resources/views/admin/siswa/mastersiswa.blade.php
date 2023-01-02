@@ -2,18 +2,6 @@
 @section('title', 'mastersiswa')
 @section('content-title', 'Master Siswa')
 @section('content')
-{{-- <section>
-    <ul>
-        @foreach($siswas as $siswa)
-                <li>NISN : {{ $siswa->nisn }}</li>
-                <li>Nama : {{ $siswa->nama_siswa }}</li>
-                <li>Jenis Kelamin : {{ $siswa->jk }}</li>
-                <li>Kelas : {{ $siswa->kelas }}</li>
-                <li>Jurusan : {{ $siswa->jurusan }}</li>
-                <br>
-        @endforeach
-    </ul>
-</section> --}}
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
