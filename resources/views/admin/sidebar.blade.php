@@ -58,14 +58,14 @@
 
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">Lihat Data</a>
-                        <a class="collapse-item" href="">Form Pengembalian</a>
+                        <a class="collapse-item" href="/admin/pengembalian">Lihat Data</a>
+                        <a class="collapse-item" href="/admin/pengembalian/create">Form Pengembalian</a>
                     </div>
                 </div>
             </li>
 
             <li class="nav-item @if(Request::is('admin/masterlaporan')) active @endif">
-                <a class="nav-link" href="/admin/masterkontak">
+                <a class="nav-link" href="/admin/laporan">
                 <i class="fas fa-solid fa-file-contract"></i>
                 <span>Laporan</span></a>
             </li>

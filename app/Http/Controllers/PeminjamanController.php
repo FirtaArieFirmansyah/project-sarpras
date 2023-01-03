@@ -111,6 +111,6 @@ class PeminjamanController extends Controller
     public function destroy($id)
     {
         Peminjaman::destroy($id);
-        return redirect('admin/sarpras');
+        return redirect('admin/peminjaman');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pengembalian;
 
 class PengembalianController extends Controller
 {
@@ -13,7 +14,8 @@ class PengembalianController extends Controller
      */
     public function index()
     {
-        //
+        $pengembalianes = Pengembalian::all();
+        return view('admin.pengembalian.masterpengembalian', compact('pengembalianes'));
     }
 
     /**
@@ -23,7 +25,7 @@ class PengembalianController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pengembalian.tambahpengembalian');
     }
 
     /**
@@ -34,7 +36,24 @@ class PengembalianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = [
+            'required' => ':attribute harus diisi yaa..',
+            'min' => ':attribute minimal :min yaa..',
+            'max' => ':attribute maksimal :max yaa..',
+            'numeric' => ':attribute harus diisi angka yaa..',
+            'mimes' => ':attribute harus bertipe jpg, jpeg, png yaa..',
+            'size' => ':file yang diupload harus maksimal size yaa..',
+            ];
+            $validatedData = $request->validate([
+                'nama_sarpras' => 'required',
+                'jenis_sarpras' => 'required',
+                'jumlah_sarpras' => 'required',
+                'jumlah_terpakai' => 'required',
+                'jumlah_rusak' => 'required',
+            ], $message );
+            
+            Pengembalian::create($validatedData);
+            return redirect('/admin/pengembalian');
     }
 
     /**
@@ -56,7 +75,8 @@ class PengembalianController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pengembalian = Pengembalian::findOrFail($id);
+        return view('admin.pengembalian.editpengembalian', ['pengembalian'=>$pengembalian]);
     }
 
     /**
@@ -68,7 +88,18 @@ class PengembalianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_sarpras' => 'required',
+            'jenis_sarpras' => 'required',
+            'jumlah_sarpras' => 'required',
+            'jumlah_terpakai' => 'required',
+            'jumlah_rusak' => 'required',
+        ]);
+
+        $pengembalianes = Pengembalian::find($id)
+            ->update($validatedData);
+
+        return redirect('/admin/pengembalian');
     }
 
     /**
@@ -79,6 +110,7 @@ class PengembalianController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Pengembalian::destroy($id);
+        return redirect('admin/pengembalian');
     }
 }
