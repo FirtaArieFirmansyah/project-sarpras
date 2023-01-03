@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Siswa;
+use App\Models\Sarpras;
+use App\Models\Peminjaman;
+use App\Models\Pengembalian;
 
 class DashboardController extends Controller
 {
@@ -13,7 +17,13 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.index');
+        // return view('admin.dashboard.index');
+        $siswas = Siswa::all()->count();
+        $sarpras = Sarpras::all()->count();
+        $peminjamanes = Peminjaman::all()->count();
+        $pengembalianes = Pengembalian::all()->count();
+
+        return view('admin.dashboard.index', compact('siswas', 'sarpras', 'peminjamanes', 'pengembalianes'));
     }
 
     /**
