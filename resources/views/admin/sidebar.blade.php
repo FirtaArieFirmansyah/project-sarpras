@@ -42,10 +42,10 @@
                     <i class="fas fa-arrow-right"></i>
                     <span>Peminjaman</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse @if(Request::is('admin/peminjaman') || Request::is('admin/peminjaman/create')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/admin/peminjaman">Lihat Data</a>
-                        <a class="collapse-item" href="/admin/peminjaman/create">Form Peminjaman</a>
+                        <a class="collapse-item @if(Request::is('admin/peminjaman')) active @endif" href="/admin/peminjaman">Lihat Data<a>
+                        <a class="collapse-item @if(Request::is('admin/peminjaman/create')) active @endif" href="/admin/peminjaman/create">Form Peminjaman</a>
                     </div>
                 </div>
             </li>
@@ -54,12 +54,12 @@
                 <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseUtilities"
                 aria-expanded="true"  aria-controls="collapseUtilities">
                 <i class="fas fa-arrow-left"></i>
-                <span>Pengembalian</span></a>
-
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                <span>Pengembalian</span>
+            </a>
+                <div id="collapseUtilities" class="collapse @if(Request::is('admin/pengembalian') || Request::is('admin/pengembalian/create')) show @endif" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/admin/pengembalian">Lihat Data</a>
-                        <a class="collapse-item" href="/admin/pengembalian/create">Form Pengembalian</a>
+                        <a class="collapse-item @if(Request::is('admin/pengembalian')) active @endif" href="/admin/pengembalian">Lihat Data<a>
+                        <a class="collapse-item @if(Request::is('admin/pengembalian/create')) active @endif" href="/admin/pengembalian/create">Form Pengembalian</a>
                     </div>
                 </div>
             </li>
