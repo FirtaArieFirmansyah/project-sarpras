@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Peminjaman;
 
+use App\Models\Siswa;
+use App\Models\Sarpras;
+
 class PeminjamanController extends Controller
 {
     /**
@@ -14,8 +17,9 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        $peminjamanes = Peminjaman::all();
-        return view('admin.peminjaman.masterpeminjaman', compact('peminjamanes'));
+        $siswas = Siswa::all();
+        $sarprases = Sarpras::all();
+        return view('admin.peminjaman.masterpeminjaman', compact('siswas, sarprases'));
     }
 
     /**
@@ -25,7 +29,11 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        return view('admin.peminjaman.tambahpeminjaman');
+        $siswa_id = request()->query('siswa');
+        $sarpras_id = request()->query('sarpras');
+        $siswa = Siswa::find($siswa_id);
+        $sarpras = Sarpras::find($sarpras_id);
+        return view('tambahproject', compact('siswa', 'sarpras', 'siswa_id', 'sarpras_id'));
     }
 
     /**
@@ -45,11 +53,12 @@ class PeminjamanController extends Controller
             'size' => ':file yang diupload harus maksimal size yaa..',
             ];
             $validatedData = $request->validate([
+                'nama_siswa' => 'required',
                 'nama_sarpras' => 'required',
                 'jenis_sarpras' => 'required',
-                'jumlah_sarpras' => 'required',
-                'jumlah_terpakai' => 'required',
-                'jumlah_rusak' => 'required',
+                'jumlah' => 'required',
+                'tanggal_pinjam' => 'required',
+                'tanggal_pengambilan' => 'required',
             ], $message );
             
             Peminjaman::create($validatedData);
@@ -77,6 +86,12 @@ class PeminjamanController extends Controller
     {
         $peminjaman = Peminjaman::findOrFail($id);
         return view('admin.peminjaman.editpeminjaman', ['peminjaman'=>$peminjaman]);
+
+        Peminjaman::find('id');
+        $siswas = Siswa::all();
+        $sarpras  = Sarpras::all();
+        $peminjamanes = Peminjaman::where('id', $id)->firstorfail();
+        return view('editpeminjaman', compact('peminjamanes'), compact('siswas'), compact('sarpras'));
     }
 
     /**
@@ -86,20 +101,20 @@ class PeminjamanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Peminjaman $peminjaman)
     {
         $validatedData = $request->validate([
+            'nama_siswa' => 'required',
             'nama_sarpras' => 'required',
             'jenis_sarpras' => 'required',
-            'jumlah_sarpras' => 'required',
-            'jumlah_terpakai' => 'required',
-            'jumlah_rusak' => 'required',
+            'jumlah' => 'required',
+            'tanggal_pinjam' => 'required',
+            'tanggal_pengambilan' => 'required',
         ]);
 
-        $peminjamanes = Peminjaman::find($id)
-            ->update($validatedData);
+        $peminjaman->update($validatedData);
 
-        return redirect('/admin/peminjaman');
+        return redirect()->route('admin/peminjaman');
     }
 
     /**

@@ -30,6 +30,12 @@
                 <span>Siswa</span></a>
             </li>
 
+            <li class="nav-item @if(Request::is('admin/kategori')) active @endif">
+                <a class="nav-link" href="/admin/kategori">
+                <i class="fas fa-list"></i>
+                <span>Kategori</span></a>    
+            </li>
+
             <li class="nav-item @if(Request::is('admin/sarpras')) active @endif">
                     <a class="nav-link" href="/admin/sarpras">
                     <i class="fas fa-warehouse"></i>

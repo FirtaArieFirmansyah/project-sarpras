@@ -16,13 +16,12 @@ protected $fillable = [
     'jurusan',
 ];
     protected $table = 'siswa';
-    //public $incrementing = false;
     
-    public function project(){
-        return $this->hasMany('App\Models\Project', 'id_siswa');
+    public function peminjaman(){
+        return $this->hasMany('App\Models\Peminjaman', 'id_siswa');
     }
     
-    public function kontak(){
-        return $this->belongsToMany('App\Models\Kontak', 'id_siswa')->withPivot('deskripsi');
+    public function pengembalian(){
+        return $this->hasMany('App\Models\Pengembalian', 'id_siswa');
     }
 }

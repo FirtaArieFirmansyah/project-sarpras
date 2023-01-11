@@ -6,6 +6,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
    use App\Http\Controllers\DashboardController;
    use App\Http\Controllers\SiswaController;
+   use App\Http\Controllers\KategoriController;
    use App\Http\Controllers\SarprasController;
    use App\Http\Controllers\PeminjamanController;
    use App\Http\Controllers\PengembalianController;
@@ -34,6 +35,7 @@ Route::prefix('admin')->group(function (){
 
 Route::resource('/dashboard', DashboardController::class);
 Route::resource('/siswa', SiswaController::class);
+Route::resource('/kategori', KategoriController::class);
 Route::resource('/sarpras', SarprasController::class);
 Route::resource('/peminjaman', PeminjamanController::class);
 Route::resource('/pengembalian', PengembalianController::class);

@@ -2,7 +2,7 @@
 @section('title', 'tambahpeminjaman')
 @section('content-title', 'Form Peminjaman')
 @section('content')
-{{-- 
+
 <div class="row">
   <div class="col-12">
     <div class="card mb-5">
@@ -42,20 +42,7 @@
                 </div>
               @enderror
             </div>
-            <div class="form-group">
-              <label for="foto">Foto</label>
-              <div class="custom-file">
-                <input type="file" name="foto" class="form-control-file @error('foto') is-invalid @enderror" id="foto" value="{{ old('foto')}}"
-                onchange="previewImage()"><br>
-                <img src="" class="img-preview w-100 img-fluid mb-3 col-sm-1">
-                <label>
-                @error('foto')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-              @enderror
-              </div>
-            </div>
+            
             <div class="form-group">
               <label for="tanggal">Tanggal Kembali</label>
               <input type="date" name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" id="about" value="{{ old('tanggal')}}">
@@ -71,6 +58,6 @@
       </div>
     </div>
   </div>
-</div> --}}
+</div>
 
 @endsection

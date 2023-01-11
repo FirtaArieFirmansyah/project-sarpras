@@ -11,12 +11,14 @@ class Peminjaman extends Model
     protected $fillable = [
         'id_siswa',
         'id_sarpras',
+        'jumlah',
         'tanggal_pinjam',
         'tanggal_pengambilan',
         'status',
     ];
         protected $table = 'peminjaman';
         protected $guarded=[];
+        
         public function nama_siswa(){
             return $this->belongsTo('App\Models\Siswa', 'id_siswa');
         }

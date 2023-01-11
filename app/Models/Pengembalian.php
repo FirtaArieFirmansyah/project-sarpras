@@ -16,8 +16,9 @@ class Pengembalian extends Model
         'status',
     ];
         protected $table = 'peminjaman';
-        protected $guarded=[];
-        public function nama_siswa(){
-            return $this->belongsTo('App\Models\Siswa', 'id_siswa');
-        }
+        // protected $guarded=[];
+        
+        // public function nama_siswa(){
+        //     return $this->belongsTo('App\Models\Siswa', 'id_siswa');
+        // }
 }
