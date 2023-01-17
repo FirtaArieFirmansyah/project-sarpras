@@ -14,6 +14,10 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
+            <div class="sidebar-heading mt-3">
+                HOME
+            </div>
+
             <!-- Nav Item - Dashboard -->
             <li class="nav-item @if(Request::is('admin/dashboard')) active @endif">
                 <a class="nav-link" href="/admin/dashboard">
@@ -24,23 +28,48 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
+            <div class="sidebar-heading mt-3">
+                DATA MASTER
+            </div>
+
             <li class="nav-item @if(Request::is('admin/siswa')) active @endif">
                 <a class="nav-link" href="/admin/siswa">
                 <i class="fas fa-users"></i>
                 <span>Siswa</span></a>
             </li>
 
-            <li class="nav-item @if(Request::is('admin/kategori')) active @endif">
+            {{-- <li class="nav-item @if(Request::is('admin/kategori')) active @endif">
                 <a class="nav-link" href="/admin/kategori">
                 <i class="fas fa-list"></i>
                 <span>Kategori</span></a>    
+            </li> --}}
+
+            <li class="nav-item @if(Request::is('admin/kategori', 'admin/sarpras')) active @endif">
+                <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseOne"
+                aria-expanded="true"  aria-controls="collapseOne">
+                <i class="fas fa-warehouse"></i>
+                <span>Sarana Prasarana</span>
+            </a>
+                <div id="collapseOne" class="collapse @if(Request::is('admin/kategori', 'admin/sarpras') || Request::is('admin/kategori', 'admin/sarpras')) show @endif" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item @if(Request::is('admin/kategori')) active @endif" href="/admin/kategori">Kategori<a>
+                        <a class="collapse-item @if(Request::is('admin/sarpras')) active @endif" href="/admin/sarpras">Sarpras</a>
+                    </div>
+                </div>
             </li>
 
-            <li class="nav-item @if(Request::is('admin/sarpras')) active @endif">
+            {{-- <li class="nav-item @if(Request::is('admin/sarpras')) active @endif">
                     <a class="nav-link" href="/admin/sarpras">
                     <i class="fas fa-warehouse"></i>
                     <span>Sarana Prasarana</span></a>    
-            </li>
+            </li> --}}
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <div class="sidebar-heading mt-3">
+                ACTION
+            </div>
             
            <li class="nav-item @if(Request::is('admin/masterpeminjaman')) active @endif">
                 <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
@@ -69,6 +98,13 @@
                     </div>
                 </div>
             </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <div class="sidebar-heading mt-3">
+                REPORT
+            </div>
 
             <li class="nav-item @if(Request::is('admin/masterlaporan')) active @endif">
                 <a class="nav-link" href="/admin/laporan">

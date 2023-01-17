@@ -13,9 +13,19 @@ class SiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $siswas = Siswa::all();
+        if($request->has('search')){
+            $siswas = Siswa::where('nisn','LIKE','%' .$request->search. '%')
+                           ->orWhere('nama_siswa','LIKE','%' .$request->search. '%')
+                           ->orWhere('jk','LIKE','%' .$request->search. '%')
+                           ->orWhere('kelas','LIKE','%' .$request->search. '%')
+                           ->orWhere('jurusan','LIKE','%' .$request->search. '%')
+                           ->paginate(5);
+        }else{
+            $siswas = Siswa::paginate(5);
+        }
+        
         return view('admin.siswa.mastersiswa', compact('siswas'));
     }
 

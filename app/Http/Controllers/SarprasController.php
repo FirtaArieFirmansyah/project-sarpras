@@ -12,9 +12,16 @@ class SarprasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $sarprases = Sarpras::all();
+        if($request->has('search')){
+            $sarprases = Sarpras::where('nama_sarpras','LIKE','%' .$request->search. '%')
+                           ->orWhere('jenis_sarpras','LIKE','%' .$request->search. '%')
+                           ->paginate(5);
+        }else{
+            $sarprases = Sarpras::paginate(5);
+        }
+        
         return view('admin.sarpras.mastersarpras', compact('sarprases'));
     }
 

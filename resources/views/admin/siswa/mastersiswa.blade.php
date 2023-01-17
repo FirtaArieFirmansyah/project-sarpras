@@ -5,18 +5,28 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h4 class="m-0 font-weight-bold text-primary text-center">DATA SISWA</h4>
+        <h6 class="m-0 font-weight-bold text-primary text-center">DATA SISWA</h6>
     </div>
     <section>
         <div class="card-body">
             <div class="table-responsive">
-                <a href="{{route('siswa.create')}}" class="btn btn-success mb-4">+ Tambah Data</a>
-                <table class="table table-responsive table-bordered table-hover table-stripped"> 
+                <div class="row g-3 justify-content-between align-items-center mb-3">
+                    <div class="col-3 position-relative">
+                        <i class="fas fa-search position-absolute" style="right: 25px; top:50%; transform:translateY(-50%)"></i>
+                        <form action="/admin/siswa" method="GET">
+                            <input type="text" id="" name="search" class="form-control" aria-describedby="" placeholder="Search">
+                        </form>
+                    </div>
+                    <div class="col-auto">
+                        <a href="{{route('siswa.create')}}" class="btn btn-success">+ Tambah Data</a>
+                    </div>
+                </div>
+                <table class="table table-bordered table-hover table-stripped"> 
                     <thead>
                         <tr class="text-center text-nowrap">
                             <th>No.</th>
                             <th>Nisn</th>
-                            <th>Nama</th>
+                            <th>Nama Siswa</th>
                             <th>Jenis Kelamin</th>
                             <th>Kelas</th>
                             <th>Jurusan</th>
@@ -25,11 +35,11 @@
                     </tbody>
                     {{-- @php $no=0; @endphp --}}
                     @if($siswas->count() > 0)
-                        @foreach ($siswas as $siswa)
+                        @foreach ($siswas as $no => $siswa)
                         {{-- @php $no++; @endphp --}}
                         <tr class="text-center text-nowrap">
                             {{-- <th>{{$no}}</th> --}}
-                            <td>{{$loop->iteration}}</td>
+                            <td>{{$no + $siswas->firstItem()}}</td>
                             <td>{{$siswa->nisn}}</td>
                             <td>{{$siswa->nama_siswa}}</td>
                             <td>{{$siswa->jk}}</td>
@@ -53,6 +63,7 @@
                         </tr>
                     @endif
                 </table>
+                {{ $siswas->links() }}
             </div>
         </div>
     </section>

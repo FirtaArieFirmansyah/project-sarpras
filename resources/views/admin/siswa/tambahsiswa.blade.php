@@ -35,8 +35,8 @@
              <label for="jk">Jenis Kelamin</label><br>
               <select name="jk" class="form-control @error('jk') is-invalid @enderror" id="jk" value="{{ old('jk')}}">
                <option selected disabled>Pilih jenis kelamin</option>
-               <option value="Laki-laki">Laki - laki</option>
-               <option value="Perempuan">Perempuan</option>
+               <option @if("Laki-laki" == old('jk')) selected @endif value="Laki-laki">Laki - laki</option>
+               <option @if("Perempuan" == old('jk')) selected @endif value="Perempuan">Perempuan</option>
               </select>
               @error('jk')
                 <div class="invalid-feedback">
