@@ -17,9 +17,9 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        $siswas = Siswa::all();
-        $sarprases = Sarpras::all();
-        return view('admin.peminjaman.masterpeminjaman', compact('siswas, sarprases'));
+        //$siswas = Siswa::all();
+        //$sarprases = Sarpras::all();
+        return view('admin.peminjaman.masterpeminjaman');
     }
 
     /**
@@ -29,11 +29,12 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        $siswa_id = request()->query('siswa');
-        $sarpras_id = request()->query('sarpras');
-        $siswa = Siswa::find($siswa_id);
-        $sarpras = Sarpras::find($sarpras_id);
-        return view('tambahproject', compact('siswa', 'sarpras', 'siswa_id', 'sarpras_id'));
+        // $siswa_id = request()->query('siswa');
+        // $sarpras_id = request()->query('sarpras');
+        // $siswa = Siswa::find($siswa_id);
+        // $sarpras = Sarpras::find($sarpras_id);
+        // return view('tambahpeminjaman', compact('siswa', 'sarpras', 'siswa_id', 'sarpras_id'));
+        return view('admin.peminjaman.tambahpeminjaman');
     }
 
     /**
@@ -44,25 +45,25 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        $message = [
-            'required' => ':attribute harus diisi yaa..',
-            'min' => ':attribute minimal :min yaa..',
-            'max' => ':attribute maksimal :max yaa..',
-            'numeric' => ':attribute harus diisi angka yaa..',
-            'mimes' => ':attribute harus bertipe jpg, jpeg, png yaa..',
-            'size' => ':file yang diupload harus maksimal size yaa..',
-            ];
-            $validatedData = $request->validate([
-                'nama_siswa' => 'required',
-                'nama_sarpras' => 'required',
-                'jenis_sarpras' => 'required',
-                'jumlah' => 'required',
-                'tanggal_pinjam' => 'required',
-                'tanggal_pengambilan' => 'required',
-            ], $message );
+        // $message = [
+        //     'required' => ':attribute harus diisi yaa..',
+        //     'min' => ':attribute minimal :min yaa..',
+        //     'max' => ':attribute maksimal :max yaa..',
+        //     'numeric' => ':attribute harus diisi angka yaa..',
+        //     'mimes' => ':attribute harus bertipe jpg, jpeg, png yaa..',
+        //     'size' => ':file yang diupload harus maksimal size yaa..',
+        //     ];
+        //     $validatedData = $request->validate([
+        //         'nama_siswa' => 'required',
+        //         'nama_sarpras' => 'required',
+        //         'jenis_sarpras' => 'required',
+        //         'jumlah' => 'required',
+        //         'tanggal_pinjam' => 'required',
+        //         'tanggal_pengambilan' => 'required',
+        //     ], $message );
             
-            Peminjaman::create($validatedData);
-            return redirect('/admin/peminjaman');
+        //     Peminjaman::create($validatedData);
+        //     return redirect('/admin/peminjaman');
     }
 
     /**
@@ -84,14 +85,14 @@ class PeminjamanController extends Controller
      */
     public function edit($id)
     {
-        $peminjaman = Peminjaman::findOrFail($id);
-        return view('admin.peminjaman.editpeminjaman', ['peminjaman'=>$peminjaman]);
+        // $peminjaman = Peminjaman::findOrFail($id);
+        // return view('admin.peminjaman.editpeminjaman', ['peminjaman'=>$peminjaman]);
 
-        Peminjaman::find('id');
-        $siswas = Siswa::all();
-        $sarpras  = Sarpras::all();
-        $peminjamanes = Peminjaman::where('id', $id)->firstorfail();
-        return view('editpeminjaman', compact('peminjamanes'), compact('siswas'), compact('sarpras'));
+        // Peminjaman::find('id');
+        // $siswas = Siswa::all();
+        // $sarpras  = Sarpras::all();
+        // $peminjamanes = Peminjaman::where('id', $id)->firstorfail();
+        // return view('editpeminjaman', compact('peminjamanes'), compact('siswas'), compact('sarpras'));
     }
 
     /**
@@ -103,18 +104,18 @@ class PeminjamanController extends Controller
      */
     public function update(Request $request, Peminjaman $peminjaman)
     {
-        $validatedData = $request->validate([
-            'nama_siswa' => 'required',
-            'nama_sarpras' => 'required',
-            'jenis_sarpras' => 'required',
-            'jumlah' => 'required',
-            'tanggal_pinjam' => 'required',
-            'tanggal_pengambilan' => 'required',
-        ]);
+        // $validatedData = $request->validate([
+        //     'nama_siswa' => 'required',
+        //     'nama_sarpras' => 'required',
+        //     'jenis_sarpras' => 'required',
+        //     'jumlah' => 'required',
+        //     'tanggal_pinjam' => 'required',
+        //     'tanggal_pengambilan' => 'required',
+        // ]);
 
-        $peminjaman->update($validatedData);
+        // $peminjaman->update($validatedData);
 
-        return redirect()->route('admin/peminjaman');
+        // return redirect()->route('admin/peminjaman');
     }
 
     /**
@@ -125,7 +126,7 @@ class PeminjamanController extends Controller
      */
     public function destroy($id)
     {
-        Peminjaman::destroy($id);
-        return redirect('admin/peminjaman');
+        // Peminjaman::destroy($id);
+        // return redirect('admin/peminjaman');
     }
 }

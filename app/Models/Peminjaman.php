@@ -9,8 +9,8 @@ class Peminjaman extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id_siswa',
-        'id_sarpras',
+        'siswa_id',
+        'sarpras_id',
         'jumlah',
         'tanggal_pinjam',
         'tanggal_pengambilan',
@@ -20,6 +20,6 @@ class Peminjaman extends Model
         protected $guarded=[];
         
         public function nama_siswa(){
-            return $this->belongsTo('App\Models\Siswa', 'id_siswa');
+            return $this->belongsTo(Siswa::class, 'siswa_id');
         }
 }

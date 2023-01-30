@@ -12,23 +12,34 @@
           @csrf
           <form>
             <div class="form-group">
-              <label for="nama_sarpras">Nama</label>
-              <input type="text" name="nama_sarpras" class="form-control @error('nama_sarpras') is-invalid @enderror" id="nama_sarpras" value="{{ old('nama_sarpras')}}">
-              @error('nama_sarpras')
+              <label for="kode_sarpras">Kode Sarpras</label>
+              <input type="text" name="kode_sarpras" class="form-control @error('kode_sarpras') is-invalid @enderror" id="kode_sarpras" value="{{ old('kode_sarpras')}}">
+              @error('kode_sarpras')
                 <div class="invalid-feedback">
                   {{ $message }}
                 </div>
               @enderror
             </div>
 
-            <div class="mb-3">
-             <label for="jenis_sarpras">Jenis</label><br>
-              <select name="jenis_sarpras" class="form-control @error('jenis_sarpras') is-invalid @enderror" id="jenis_sarpras" value="{{ old('jenis_sarpras')}}">
-               <option selected disabled>Pilih jenis sarpras</option>
-               <option value="Barang">Barang</option>
-               <option value="Ruang">Ruang</option>
+            <div class="form-group">
+              <label for="kategori_id">Kategori</label>
+              <select class="form-control form-select" name="kategori_id" id="">
+                <option value="">- Pilih Kategori -</option>
+                @foreach ($kategories as $kategori)
+                    <option value="{{$kategori->id}}">{{ $kategori->name }}</option>
+                @endforeach
               </select>
-              @error('jenis_sarpras')
+              @error('kategori_id')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
+
+            <div class="form-group">
+              <label for="nama_sarpras">Nama Sarpras</label>
+              <input type="text" name="nama_sarpras" class="form-control @error('nama_sarpras') is-invalid @enderror" id="nama_sarpras" value="{{ old('nama_sarpras')}}">
+              @error('nama_sarpras')
                 <div class="invalid-feedback">
                   {{ $message }}
                 </div>

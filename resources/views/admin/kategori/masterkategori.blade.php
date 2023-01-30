@@ -13,6 +13,7 @@
                     <table class="table table-striped table-bordered text-center">
                         <thead>
                                 <th style="width: 10px">No.</th>
+                                <th>Kode Kategori</th>
                                 <th>Nama Kategori</th>
                                 <th>Aksi</th>
                         </thead>
@@ -21,6 +22,7 @@
                             @foreach ($kategories as $no => $kategori)
                             <tr>
                                 <td>{{$no + $kategories->firstItem()}}</td>
+                                <td>{{$kategori->kode}}</td>
                                 <td>{{$kategori->name}}</td>
                                 <td>
                                     <a href="{{route('kategori.edit', $kategori['id'])}}" class="btn btn-sm btn-primary">Edit</a>
@@ -34,8 +36,8 @@
                             @endforeach
                             @else 
                             <tr>
-                                <td colspan="3" class="text-center">
-                                     Data Siswa Kosong.
+                                <td colspan="4" class="text-center">
+                                     Data Kategori Kosong.
                                 </td>
                             </tr>
                         @endif
@@ -56,6 +58,8 @@
                         <form>
                         @csrf
                             <div class="form-group">
+                                <label for="kode">Kode Kategori</label>
+                                <input class="form-control mb-2" name="kode" id="kode" type="text" value="{{ old('kode')}}">
                                 <label for="name">Nama Kategori</label>
                                 <input class="form-control mb-2" name="name" id="name" type="text" value="{{ old('name')}}">
                             </div>

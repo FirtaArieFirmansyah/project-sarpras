@@ -8,20 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class Sarpras extends Model
 {
     use HasFactory;
-protected $fillable = [
+    protected $fillable = [
+    'kode_sarpras',
+    'kategori_id',
     'nama_sarpras',
-    'jenis_sarpras',
     'jumlah_sarpras',
     'jumlah_terpakai',
     'jumlah_rusak',
 ];
     protected $table = 'sarpras';
+
+    public function kategori(){
+        return $this->belongsTo(Kategori::class, 'kategori_id');
+    }
     
     public function peminjaman(){
-        return $this->hasMany('App\Models\Peminjaman', 'id_siswa');
+        return $this->hasMany(Peminjaman::class, 'siswa_id');
     }
     
     public function pengembalian(){
-        return $this->hasMany('App\Models\Pengembalian', 'id_siswa');
+        return $this->hasMany(Pengembalian::class, 'siswa_id');
     }
 }

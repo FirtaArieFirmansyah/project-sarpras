@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('peminjaman', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('siswa_id');
+            $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade');
+            $table->unsignedBigInteger('sarpras_id');
+            $table->foreign('sarpras_id')->references('id')->on('sarpras')->onDelete('cascade');
+            $table->string('status');
+            $table->unsignedBigInteger('status');
             $table->timestamps();
         });
     }

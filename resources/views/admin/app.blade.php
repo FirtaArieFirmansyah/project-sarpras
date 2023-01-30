@@ -19,6 +19,8 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset ('template/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{ asset('template/vendor/datatables/dataTables.bootstrap4.css') }}">
+
     <title>PESAPASE - @yield('title')</title>
 </head>
 
@@ -100,6 +102,31 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ asset ('template/js/sb-admin-2.min.js') }}"></script>
 
+    <script src="{{ asset ('template/vendor/datatables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset ('template/vendor/datatables/dataTables.bootstrap4.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            let t = $('#dt').DataTable({
+            columnDefs: [{
+                targets: 0
+                , orderable: false
+                , searchable: false
+            }],
+            bSort:false
+            });
+            t.on('order.dt search.dt', function() {
+            t.column(0, {
+                search: 'applied'
+                , order: 'applied'
+            }).nodes().each(function(cell, i) {
+                cell.innerHTML = i + 1;
+            });
+            }).draw();
+  });
+    </script>
+
+    @yield('script')
 </body>
 
 </html>

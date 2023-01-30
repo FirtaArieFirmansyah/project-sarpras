@@ -21,6 +21,10 @@
                         @method('PUT')
                         <form>
                             <div class="form-group">
+                                <label for="kode">Kode Kategori</label>
+                                <input class="form-control mb-2" type="text" name="kode" id="kode" value="{{ $kategori->kode }}">
+                            </div>
+                            <div class="form-group">
                                 <label for="name">Nama Kategori</label>
                                 <input class="form-control mb-2" type="text" name="name" id="name" value="{{ $kategori->name }}">
                             </div>

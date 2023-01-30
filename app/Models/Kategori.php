@@ -11,6 +11,7 @@ class Kategori extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'kode',
         'name',
     ];
     
@@ -19,6 +20,6 @@ class Kategori extends Model
     
     public function kontak(){
 
-        return $this->hasMany('App\Models\Sarpras', 'sarpras_id');
+        return $this->hasMany(Sarpras::class, 'category_id');
             }
 }

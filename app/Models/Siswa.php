@@ -18,10 +18,10 @@ protected $fillable = [
     protected $table = 'siswa';
     
     public function peminjaman(){
-        return $this->hasMany('App\Models\Peminjaman', 'id_siswa');
+        return $this->hasMany(Peminjaman::class, 'siswa_id');
     }
     
     public function pengembalian(){
-        return $this->hasMany('App\Models\Pengembalian', 'id_siswa');
+        return $this->hasMany(Pengembalian::class, 'siswa_id');
     }
 }

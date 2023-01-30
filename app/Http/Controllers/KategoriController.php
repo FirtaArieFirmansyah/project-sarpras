@@ -44,6 +44,7 @@ class KategoriController extends Controller
             'numeric' => ':attribute harus diisi angka yaa..',
             ];
             $validatedData = $request->validate([
+                'kode' => 'required',
                 'name' => 'required',
             ], $message );
             
@@ -84,6 +85,7 @@ class KategoriController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
+            'kode' => 'required',
             'name' => 'required',
         ]);
 

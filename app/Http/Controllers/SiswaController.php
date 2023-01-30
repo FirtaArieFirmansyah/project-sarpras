@@ -21,9 +21,9 @@ class SiswaController extends Controller
                            ->orWhere('jk','LIKE','%' .$request->search. '%')
                            ->orWhere('kelas','LIKE','%' .$request->search. '%')
                            ->orWhere('jurusan','LIKE','%' .$request->search. '%')
-                           ->paginate(5);
+                           ->get();
         }else{
-            $siswas = Siswa::paginate(5);
+            $siswas = Siswa::all();
         }
         
         return view('admin.siswa.mastersiswa', compact('siswas'));

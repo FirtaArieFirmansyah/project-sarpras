@@ -13,6 +13,31 @@
           @method('PUT')
           <form>
             <div class="form-group">
+              <label for="kode_sarpras">Kode Sarpras</label>
+              <input type="text" class="form-control @error('kode_sarpras') is-invalid @enderror" id="kode_sarpras" value="{{ $sarpras->kode_sarpras }}" placeholder="Masukkan nama sarpras.." name="kode_sarpras">
+              @error('kode_sarpras')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
+
+            <div class="form-group">
+              <label for="kategori_id">Kategori</label>
+              <select class="form-control form-select" name="kategori_id" id="kategori_id">
+                <option value="{{ $sarpras->kategori_id }}">- Pilih Kategori -</option>
+                @foreach ($kategories as $kategori)
+                    <option value="{{$kategori->id}}" @if($sarpras->kategori->id == $kategori->id) selected @endif>{{ $kategori->name }}</option>
+                @endforeach
+              </select>
+              @error('kategori_id')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
+
+            <div class="form-group">
               <label for="nama_sarpras">Nama</label>
               <input type="text" class="form-control @error('nama_sarpras') is-invalid @enderror" id="nama_sarpras" value="{{ $sarpras->nama_sarpras }}" placeholder="Masukkan nama sarpras.." name="nama_sarpras">
               @error('nama_sarpras')
@@ -22,18 +47,6 @@
               @enderror
             </div>
 
-            <div class="mb-3">
-             <label for="jenis_sarpras">Jenis</label><br>
-              <select name="jenis_sarpras" class="form-control @error('jenis_sarpras') is-invalid @enderror" id="jenis_sarpras">
-               <option @if($sarpras->jenis_sarpras == "Barang") selected @endif value="Barang">Barang</option>
-               <option @if($sarpras->jenis_sarpras == "Ruang") selected @endif value="Ruang">Ruang</option>
-              </select>
-              @error('jenis_sarpras')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-              @enderror
-            </div>
 
             <div class="form-group">
                 <label for="jumlah_sarpras">Jumlah</label>
