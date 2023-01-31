@@ -37,7 +37,6 @@ Route::resource('/dashboard', DashboardController::class);
 Route::resource('/siswa', SiswaController::class);
 Route::resource('/kategori', KategoriController::class);
 Route::resource('/sarpras', SarprasController::class);
-//Route::get('/sarpras/action', [SarprasController::class, 'action'])->name('action');
 Route::resource('/peminjaman', PeminjamanController::class);
 Route::resource('/pengembalian', PengembalianController::class);
 Route::resource('/laporan', LaporanController::class);

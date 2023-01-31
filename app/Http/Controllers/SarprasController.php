@@ -27,55 +27,6 @@ class SarprasController extends Controller
         return view('admin.sarpras.mastersarpras', compact('sarprases'));
     }
 
-    // public function action(Request $request)
-    // {
-    //     if($request->ajax())
-    //     {
-    //         $query = $request->get('query');
-    //         if($query != '') {
-    //             $data = Sarpras::table('sarpras')
-    //                 ->where('kode_sarpras','LIKE','%' .$query. '%')
-    //                 ->orWhere('nama_sarpras','LIKE','%' .$query. '%')
-    //                 ->orWhere('kategori_id','LIKE','%' .$query. '%')
-    //                 ->orderBy('id', 'desc')
-    //                 ->get();
-
-    //         } else {
-    //             $data = Sarpras::table('sarpras')
-    //                 ->orderBy('id', 'desc')
-    //                 ->get(); 
-    //         }
-
-    //         $total_row = $data->count();
-    //         if($total_row > 0){
-    //             foreach($data as $row)
-    //             {
-    //                 $output ='
-    //                 <tr>
-    //                     <td>'.$row->kode_sarpras.'</td>
-    //                     <td>'.$row->kategori->name.'</td>
-    //                     <td>'.$row->nama_sarpras.'</td>
-    //                     <td>'.$row->jumlah_sarpras.'</td>
-    //                     <td>'.$row->jumlah_terpakai.'</td>
-    //                     <td>'.$row->jumlah_rusak.'</td>
-    //                 </tr>
-    //                 ';
-    //             }
-
-    //         } else {
-    //             $output = '
-    //             <tr>
-    //                 <td align="center" cosplan="5">No Data Found</td>
-    //             </tr>
-    //             ';
-    //         }
-    //         $data = array(
-    //             'table_data' =>$output
-    //         );
-    //         echo json_encode($data);
-    //     }
-    // }
-
     /**
      * Show the form for creating a new resource.
      *

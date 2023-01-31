@@ -21,6 +21,9 @@
 
     <link rel="stylesheet" href="{{ asset('template/vendor/datatables/dataTables.bootstrap4.css') }}">
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" integrity="sha512-kq3FES+RuuGoBW3a9R2ELYKRywUEQv0wvPTItv3DSGqjpbNtGWVdvT8qwdKkqvPzT93jp8tSF4+oN4IeTEIlQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>PESAPASE - @yield('title')</title>
 </head>
 
@@ -104,9 +107,11 @@
 
     <script src="{{ asset ('template/vendor/datatables/jquery.dataTables.js') }}"></script>
     <script src="{{ asset ('template/vendor/datatables/dataTables.bootstrap4.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script>
         $(document).ready(function() {
+            // datatable
             let t = $('#dt').DataTable({
             columnDefs: [{
                 targets: 0
@@ -123,7 +128,9 @@
                 cell.innerHTML = i + 1;
             });
             }).draw();
-  });
+
+            $.fn.select2.defaults.set( "theme", "bootstrap" );
+        });
     </script>
 
     @yield('script')
