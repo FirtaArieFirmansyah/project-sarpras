@@ -19,7 +19,8 @@ class PeminjamanController extends Controller
     {
         $siswas = Siswa::all();
         $sarprases = Sarpras::all();
-        return view('admin.peminjaman.masterpeminjaman', compact('siswas', 'sarpras'));
+        $peminjamanes = Peminjaman::all();
+        return view('admin.peminjaman.masterpeminjaman', compact('siswas', 'sarprases', 'peminjamanes'));
     }
 
     /**
@@ -29,6 +30,7 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
+       
         $siswas = Siswa::all();
         $sarprases = Sarpras::all();
         return view('admin.peminjaman.tambahpeminjaman', compact('siswas', 'sarprases'));
@@ -42,19 +44,21 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $message = [
-            'required' => ':attribute harus diisi yaa..',
-            'min' => ':attribute minimal :min yaa..',
-            'max' => ':attribute maksimal :max yaa..',
-            'numeric' => ':attribute harus diisi angka yaa..',
-            'mimes' => ':attribute harus bertipe jpg, jpeg, png yaa..',
-            'size' => ':file yang diupload harus maksimal size yaa..',
+            'required' => ':Attribute harus diisi ya !',
+            'min' => ':Attribute minimal :min ya !',
+            'max' => ':Attribute maksimal :max ya !',
+            'numeric' => ':Attribute harus diisi angka ya !',
+            'mimes' => ':Attribute harus bertipe jpg, jpeg, png ya !',
+            'size' => ':File yang diupload harus maksimal size ya !',
             ];
             $validatedData = $request->validate([
-                'nama_siswa' => 'required',
-                'nama_sarpras' => 'required',
+                'siswa_id' => 'required',
+                'sarpras_id' => 'required',
                 'jumlah' => 'required',
-                'tanggal_pengambilan' => 'required',
+                'tanggal_peminjaman' => 'required',
+                'tanggal_pengembalian' => 'required',
             ], $message );
             
             Peminjaman::create($validatedData);
@@ -100,20 +104,12 @@ class PeminjamanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Peminjaman $peminjaman)
+    public function update(Peminjaman $peminjaman)
     {
-        // $validatedData = $request->validate([
-        //     'nama_siswa' => 'required',
-        //     'nama_sarpras' => 'required',
-        //     'jenis_sarpras' => 'required',
-        //     'jumlah' => 'required',
-        //     'tanggal_pinjam' => 'required',
-        //     'tanggal_pengambilan' => 'required',
-        // ]);
 
-        // $peminjaman->update($validatedData);
+        $peminjaman->update(['status'=> 1]);
 
-        // return redirect()->route('admin/peminjaman');
+        return redirect()->route('peminjaman.index');
     }
 
     /**
@@ -122,9 +118,10 @@ class PeminjamanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Peminjaman $peminjaman)
     {
-        // Peminjaman::destroy($id);
-        // return redirect('admin/peminjaman');
+        // $peminjaman->delete();
+        $peminjaman->update(['status'=> 2]);
+        return redirect()->route('peminjaman.index');
     }
 }

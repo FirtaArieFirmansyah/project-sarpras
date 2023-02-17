@@ -13,7 +13,7 @@ class Sarpras extends Model
     'kategori_id',
     'nama_sarpras',
     'jumlah_sarpras',
-    'jumlah_terpakai',
+    'jumlah_normal',
     'jumlah_rusak',
 ];
     protected $table = 'sarpras';
@@ -23,7 +23,7 @@ class Sarpras extends Model
     }
     
     public function peminjaman(){
-        return $this->hasMany(Peminjaman::class, 'siswa_id');
+        return $this->hasMany(Peminjaman::class, 'sarpras_id');
     }
     
     public function pengembalian(){

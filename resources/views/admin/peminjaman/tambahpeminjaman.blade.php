@@ -3,18 +3,15 @@
 @section('content-title', 'Form Peminjaman')
 @section('content')
 
-<div class="row justify-content-center mt-5">
+<div class="row justify-content-center mb-5">
   <div class="col-6">
-    <div class="card mb-5">
+    <div class="card">
       <div class="card-body">
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('peminjaman.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <form>
-            <div class="form-group mt-1">
+            <div class="form-group">
               <label for="siswa_id">Siswa</label>
-              {{-- <select class="form-control form-select" name="kategori_id" id="">
-                <option value=""> Pilih siswa </option>
-              </select> --}}
               <select class="form-control form-select js-example-basic-single-siswa" name="siswa_id" id="">
                 <option value=""></option>
                 @foreach ($siswas as $siswa)
@@ -34,8 +31,33 @@
             </div>
 
             <div class="form-group">
-              <label for="nama_sarpras">Jumlah</label>
-              <input type="text" class="form-control">
+              <label for="jumlah">Jumlah</label>
+              <input type="text" name="jumlah" class="form-control @error('jumlah') is-invalid @enderror" id="jumlah" value="{{ old('jumlah')}}">
+              @error('jumlah')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
+
+            <div class="form-group">
+              <label for="tanggal_peminjaman">Tanggal Peminjaman</label>
+              <input type="date" name="tanggal_peminjaman" class="form-control @error('tanggal_peminjaman') is-invalid @enderror" id="tanggal_peminjaman" value="{{ old('tanggal_peminjaman')}}">
+              @error('tanggal_peminjaman')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
+
+            <div class="form-group">
+              <label for="tanggal_pengembalian">Tanggal Pengembalian</label>
+              <input type="date" name="tanggal_pengembalian" class="form-control @error('tanggal_pengembalian') is-invalid @enderror" id="tanggal_pengembalian" value="{{ old('tanggal_pengembalian')}}">
+              @error('tanggal_pengembalian')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+              @enderror
             </div>
 
             <div class="text-center">

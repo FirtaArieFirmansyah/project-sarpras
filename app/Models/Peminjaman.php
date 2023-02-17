@@ -12,14 +12,16 @@ class Peminjaman extends Model
         'siswa_id',
         'sarpras_id',
         'jumlah',
-        'tanggal_pinjam',
-        'tanggal_pengambilan',
+        'tanggal_peminjaman',
+        'tanggal_pengembalian',
         'status',
     ];
         protected $table = 'peminjaman';
-        protected $guarded=[];
         
-        public function nama_siswa(){
-            return $this->belongsTo(Siswa::class, 'siswa_id');
+        public function siswa(){
+            return $this->belongsTo(Siswa::class);
+        }
+        public function sarpras(){
+            return $this->belongsTo(Sarpras::class);
         }
 }

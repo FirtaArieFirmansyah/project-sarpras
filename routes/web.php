@@ -9,6 +9,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
    use App\Http\Controllers\KategoriController;
    use App\Http\Controllers\SarprasController;
    use App\Http\Controllers\PeminjamanController;
+   use App\Http\Controllers\PengambilanController;
    use App\Http\Controllers\PengembalianController;
    use App\Http\Controllers\LaporanController;
 
@@ -38,6 +39,8 @@ Route::resource('/siswa', SiswaController::class);
 Route::resource('/kategori', KategoriController::class);
 Route::resource('/sarpras', SarprasController::class);
 Route::resource('/peminjaman', PeminjamanController::class);
+Route::resource('/pengambilan', PengambilanController::class);
+Route::get('/pengambilan/getJumlah/{peminjaman_id}', [PengambilanController::class, 'getJumlahPeminjaman']);
 Route::resource('/pengembalian', PengembalianController::class);
 Route::resource('/laporan', LaporanController::class);
 

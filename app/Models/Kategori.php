@@ -18,8 +18,7 @@ class Kategori extends Model
     protected $table = 'kategori';
     protected $guarded = [];
     
-    public function kontak(){
-
+    public function sarpras(){
         return $this->hasMany(Sarpras::class, 'category_id');
-            }
+    }
 }

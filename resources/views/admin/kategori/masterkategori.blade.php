@@ -10,6 +10,11 @@
                 <div class="card-header font-weight-bold">{{ __('Kategori') }}</div>
 
                 <div class="card-body text-nowrap">
+                    @if (session('status'))
+                        <div class="alert alert-success text-center" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                     <table class="table table-striped table-bordered text-center">
                         <thead>
                                 <th style="width: 10px">No.</th>
@@ -59,7 +64,7 @@
                         @csrf
                             <div class="form-group">
                                 <label for="kode">Kode Kategori</label>
-                                <input class="form-control mb-2" name="kode" id="kode" type="text" value="{{ old('kode')}}">
+                                <input class="form-control mb-2" name="kode" id="kode" type="text" value="{{ 'KTGR-'.date('d-m-Y').'-'.$kd }}" readonly="">
                                 <label for="name">Nama Kategori</label>
                                 <input class="form-control mb-2" name="name" id="name" type="text" value="{{ old('name')}}">
                             </div>

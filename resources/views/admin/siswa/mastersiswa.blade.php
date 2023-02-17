@@ -34,7 +34,7 @@
                             <td></td>
                             <td>{{$siswa->nisn}}</td>
                             <td>{{$siswa->nama_siswa}}</td>
-                            <td>{{$siswa->jk}}</td>
+                            <td>{{$siswa->}}</td>
                             <td>{{$siswa->kelas}}</td>
                             <td>{{$siswa->jurusan}}</td>
                             <td>
@@ -66,6 +66,11 @@
     </div>
     <section>
         <div class="card-body">
+            @if (session('status'))
+                <div class="alert alert-success text-center" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
             <div class="table-responsive">
                 <div class="row g-3 justify-content-between align-items-center mb-3">
                     <div class="col-auto">
@@ -76,9 +81,8 @@
                     <thead>
                         <tr class="text-center text-nowrap">
                             <th width="5%">No.</th>
-                            <th>Nisn</th>
+                            <th>NIU / J</th>
                             <th>Nama Siswa</th>
-                            <th>Jenis Kelamin</th>
                             <th>Kelas</th>
                             <th>Jurusan</th>
                             <th width="15%">Aksi</th>
@@ -92,9 +96,8 @@
                         <tr class="text-center text-nowrap">
                             {{-- <th>{{$no}}</th> --}}
                             <td></td>
-                            <td>{{$siswa->nisn}}</td>
+                            <td>{{$siswa->niuj}}</td>
                             <td>{{$siswa->nama_siswa}}</td>
-                            <td>{{$siswa->jk}}</td>
                             <td>{{$siswa->kelas}}</td>
                             <td>{{$siswa->jurusan}}</td>
                             <td>

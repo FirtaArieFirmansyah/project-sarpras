@@ -15,11 +15,10 @@
                         <tr class="text-center text-nowrap">
                             <th width="5%">No.</th>
                             <th width="40%">Nama Siswa</th>
-                            <th width="20%">Sarpras</th>
+                            <th width="40%">Sarpras</th>
                             <th width="10%">Jumlah</th>
-                            <th width="20%">Tanggal Pinjam</th>
-                            <th width="20%">Tanggal Kembali</th>
-                            <th width="10%">Status</th>
+                            <th width="15%">Status</th>
+                            <th width="10%">Aksi</th>
                         </tr>
                     </tbody>
                     
@@ -31,9 +30,10 @@
                             <td>FIRTA ARIE FIRMANSYAH</td>
                             <td>Sapu</td>
                             <td>1</td>
-                            <td>26-01-2023</td>
-                            <td>27-01-2023</td>
                             <td>Dikembalikan</td>
+                            <td>
+                                <button class="btn btn-info">Detail</button>
+                            </td>
                         </tr>
                 </table>
             </div>

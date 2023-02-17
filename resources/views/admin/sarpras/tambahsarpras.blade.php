@@ -13,7 +13,7 @@
           <form>
             <div class="form-group">
               <label for="kode_sarpras">Kode Sarpras</label>
-              <input type="text" name="kode_sarpras" class="form-control @error('kode_sarpras') is-invalid @enderror" id="kode_sarpras" value="{{ old('kode_sarpras')}}">
+              <input type="text" name="kode_sarpras" class="form-control @error('kode_sarpras') is-invalid @enderror" readonly="" id="kode_sarpras" value="{{ 'SMKN1-'.date('d-m-Y').'-'.$kd }}">
               @error('kode_sarpras')
                 <div class="invalid-feedback">
                   {{ $message }}
@@ -24,7 +24,7 @@
             <div class="form-group">
               <label for="kategori_id">Kategori</label>
               <select class="form-control form-select" name="kategori_id" id="">
-                <option value="">- Pilih Kategori -</option>
+                <option value="">Pilih Kategori</option>
                 @foreach ($kategories as $kategori)
                     <option value="{{$kategori->id}}">{{ $kategori->name }}</option>
                 @endforeach
@@ -56,25 +56,25 @@
                 @enderror
               </div>
 
-            <div class="form-group">
-              <label for="jumlah_terpakai">Terpakai</label>
-              <input type="text" name="jumlah_terpakai" class="form-control @error('jumlah_terpakai') is-invalid @enderror" id="jumlah_terpakai" value="{{ old('jumlah_terpakai')}}">
-              @error('jumlah_terpakai')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-              @enderror
-            </div>
+              <div class="form-group">
+                <label for="jumlah_normal">Normal</label>
+                <input type="text" name="jumlah_normal" class="form-control @error('jumlah_normal') is-invalid @enderror" id="jumlah_normal" value="{{ old('jumlah_normal')}}">
+                @error('jumlah_normal')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                @enderror
+              </div>
 
-            <div class="form-group">
-              <label for="jumlah_rusak">Rusak</label>
-              <input type="text" name="jumlah_rusak" class="form-control @error('jumlah_rusak') is-invalid @enderror" id="jumlah_rusak" value="{{ old('jumlah_rusak')}}">
-              @error('jumlah_rusak')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-              @enderror
-            </div>
+              <div class="form-group">
+                <label for="jumlah_rusak">Rusak</label>
+                <input type="text" name="jumlah_rusak" class="form-control @error('jumlah_rusak') is-invalid @enderror" id="jumlah_rusak" value="{{ old('jumlah_rusak')}}">
+                @error('jumlah_rusak')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                @enderror
+              </div>
             
             <button type="submit" class="btn btn-primary">Simpan</button>
           </form>

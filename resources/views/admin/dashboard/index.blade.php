@@ -64,7 +64,7 @@
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah Dipinjam</div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $peminjamanes }}</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"></div>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Jumlah Dikembalikan</div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $pengembalianes }}</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"></div>
                                 </div>
                             </div>
                         </div>

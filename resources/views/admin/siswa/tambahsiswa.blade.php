@@ -12,9 +12,9 @@
           @csrf
           <form>
             <div class="form-group">
-              <label for="nisn">NISN</label>
-              <input type="text" name="nisn" class="form-control @error('nisn') is-invalid @enderror" id="nisn" value="{{ old('nisn')}}">
-              @error('nisn')
+              <label for="niuj">NIU / J</label>
+              <input type="text" name="niuj" class="form-control @error('niuj') is-invalid @enderror" id="niuj" value="{{ old('niuj')}}">
+              @error('niuj')
                 <div class="invalid-feedback">
                   {{ $message }}
                 </div>
@@ -25,20 +25,6 @@
               <label for="nama_siswa">Nama</label>
               <input type="text" name="nama_siswa" class="form-control @error('nama_siswa') is-invalid @enderror" id="nama_siswa" value="{{ old('nama_siswa')}}">
               @error('nama_siswa')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-              @enderror
-            </div>
-
-            <div class="mb-3">
-             <label for="jk">Jenis Kelamin</label><br>
-              <select name="jk" class="form-control @error('jk') is-invalid @enderror" id="jk" value="{{ old('jk')}}">
-               <option selected disabled>Pilih jenis kelamin</option>
-               <option @if("Laki-laki" == old('jk')) selected @endif value="Laki-laki">Laki - laki</option>
-               <option @if("Perempuan" == old('jk')) selected @endif value="Perempuan">Perempuan</option>
-              </select>
-              @error('jk')
                 <div class="invalid-feedback">
                   {{ $message }}
                 </div>
@@ -74,3 +60,17 @@
 </div>
 
 @endsection
+
+{{-- <div class="mb-3">
+  <label for="jk">Jenis Kelamin</label><br>
+   <select name="jk" class="form-control @error('jk') is-invalid @enderror" id="jk" value="{{ old('jk')}}">
+    <option selected disabled>Pilih jenis kelamin</option>
+    <option @if("Laki-laki" == old('jk')) selected @endif value="Laki-laki">Laki - laki</option>
+    <option @if("Perempuan" == old('jk')) selected @endif value="Perempuan">Perempuan</option>
+   </select>
+   @error('jk')
+     <div class="invalid-feedback">
+       {{ $message }}
+     </div>
+   @enderror
+ </div> --}}

@@ -14,7 +14,7 @@
           <form>
             <div class="form-group">
               <label for="kode_sarpras">Kode Sarpras</label>
-              <input type="text" class="form-control @error('kode_sarpras') is-invalid @enderror" id="kode_sarpras" value="{{ $sarpras->kode_sarpras }}" placeholder="Masukkan nama sarpras.." name="kode_sarpras">
+              <input type="text" class="form-control @error('kode_sarpras') is-invalid @enderror" id="kode_sarpras" readonly="" value="{{ $sarpras->kode_sarpras }}" placeholder="Masukkan nama sarpras.." name="kode_sarpras">
               @error('kode_sarpras')
                 <div class="invalid-feedback">
                   {{ $message }}
@@ -47,34 +47,34 @@
               @enderror
             </div>
 
-
             <div class="form-group">
-                <label for="jumlah_sarpras">Jumlah</label>
+              <label for="jumlah_sarpras">Jumlah</label>
                 <input type="text" class="form-control @error('jumlah_sarpras') is-invalid @enderror" id="jumlah_sarpras" value="{{ $sarpras->jumlah_sarpras }}" placeholder="Masukkan jumlah sarpras.." name="jumlah_sarpras">
                 @error('jumlah_sarpras')
                   <div class="invalid-feedback">
                     {{ $message }}
                   </div>
                 @enderror
-              </div>
+            </div>
 
             <div class="form-group">
-              <label for="jumlah_terpakai">Terpakai</label>
-              <input type="text" class="form-control @error('jumlah_terpakai') is-invalid @enderror" id="jumlah_terpakai" value="{{ $sarpras->jumlah_terpakai }}" placeholder="Masukkan jumlah terpakai.." name="jumlah_terpakai">
-              @error('jumlah_terpakai')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-              @enderror
+              <label for="jumlah_normal">Normal</label>
+               <input type="text" class="form-control @error('jumlah_normal') is-invalid @enderror" id="jumlah_normal" value="{{ $sarpras->jumlah_normal }}" placeholder="Masukkan jumlah normal.." name="jumlah_normal">
+                @error('jumlah_normal')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                @enderror
             </div>
+
             <div class="form-group">
               <label for="jumlah_rusak">Rusak</label>
-              <input type="text" class="form-control @error('jumlah_rusak') is-invalid @enderror" id="jumlah_rusak" value="{{ $sarpras->jumlah_rusak }}" placeholder="Masukkan jumlah rusak.." name="jumlah_rusak">
-              @error('jumlah_rusak')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-              @enderror
+               <input type="text" class="form-control @error('jumlah_rusak') is-invalid @enderror" id="jumlah_rusak" value="{{ $sarpras->jumlah_rusak }}" placeholder="Masukkan jumlah rusak.." name="jumlah_rusak">
+                @error('jumlah_rusak')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                @enderror
             </div>
 
             <button type="submit" class="btn btn-primary">Simpan</button>

@@ -19,8 +19,10 @@ return new class extends Migration
             $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade');
             $table->unsignedBigInteger('sarpras_id');
             $table->foreign('sarpras_id')->references('id')->on('sarpras')->onDelete('cascade');
-            $table->string('status');
-            $table->unsignedBigInteger('status');
+            $table->string('jumlah');
+            $table->date('tanggal_peminjaman');
+            $table->date('tanggal_pengembalian');
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }

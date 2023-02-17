@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('pengembalian', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('pengambilan_id');
+            $table->foreign('pengambilan_id')->references('id')->on('pengambilan')->onDelete('cascade');
+            $table->date('tanggal_pengembalian');
+            $table->boolean('kondisi');
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }

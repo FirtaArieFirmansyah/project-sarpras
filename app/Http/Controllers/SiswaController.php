@@ -16,14 +16,14 @@ class SiswaController extends Controller
     public function index(Request $request)
     {
         if($request->has('search')){
-            $siswas = Siswa::where('nisn','LIKE','%' .$request->search. '%')
+            $siswas = Siswa::where('niuj','LIKE','%' .$request->search. '%')
                            ->orWhere('nama_siswa','LIKE','%' .$request->search. '%')
-                           ->orWhere('jk','LIKE','%' .$request->search. '%')
                            ->orWhere('kelas','LIKE','%' .$request->search. '%')
                            ->orWhere('jurusan','LIKE','%' .$request->search. '%')
+                           ->orderBy('nama_siswa', 'asc')
                            ->get();
         }else{
-            $siswas = Siswa::all();
+            $siswas = Siswa::orderBy('nama_siswa', 'asc')->get();
         }
         
         return view('admin.siswa.mastersiswa', compact('siswas'));
@@ -48,23 +48,23 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $message = [
-            'required' => ':attribute harus diisi yaa..',
-            'min' => ':attribute minimal :min yaa..',
-            'max' => ':attribute maksimal :max yaa..',
-            'numeric' => ':attribute harus diisi angka yaa..',
-            'mimes' => ':attribute harus bertipe jpg, jpeg, png yaa..',
-            'size' => ':file yang diupload harus maksimal size yaa..',
+            'required' => ':Attribute harus diisi ya !',
+            'min' => ':Attribute minimal :min ya !',
+            'max' => ':Attribute maksimal :max ya !',
+            'numeric' => ':Attribute harus diisi angka ya !',
+            'mimes' => ':Attribute harus bertipe jpg, jpeg, png ya !',
+            'size' => ':File yang diupload harus maksimal size ya !',
             ];
             $validatedData = $request->validate([
-                'nisn' => 'required|numeric',
+                'niuj' => 'required',
                 'nama_siswa' => 'required|min:5',
-                'jk' => 'required',
                 'kelas' => 'required',
                 'jurusan' => 'required',
             ], $message );
             
             Siswa::create($validatedData);
-            return redirect('/admin/siswa');
+            //return redirect('/admin/siswa');
+            return redirect()->route('siswa.index')->with('status', 'Siswa sukses ditambahkan !');
     }
 
     /**
@@ -100,9 +100,8 @@ class SiswaController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'nisn' => 'required|numeric',
+            'niuj' => 'required',
             'nama_siswa' => 'required|min:5',
-            'jk' => 'required',
             'kelas' => 'required',
             'jurusan' => 'required',
         ]);
@@ -110,8 +109,8 @@ class SiswaController extends Controller
         $siswas=Siswa::find($id)
             ->update($validatedData);
 
-        //return redirect()->route('admin.siswa.mastersiswa.index')->with('success', 'Data Updated Successfully');
-        return redirect('/admin/siswa');
+        //return redirect('/admin/siswa');
+        return redirect()->route('siswa.index')->with('status', 'Siswa sukes diedit !');
     }
 
     /**
@@ -123,6 +122,7 @@ class SiswaController extends Controller
     public function destroy($id)
     {
         Siswa::destroy($id);
-        return redirect('admin/siswa');
+        //return redirect('admin/siswa');
+        return redirect()->route('siswa.index')->with('status', 'Siswa sukses dihapus !');
     }
 }

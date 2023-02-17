@@ -9,6 +9,11 @@
     </div>
     <section>
         <div class="card-body">
+            @if (session('status'))
+                <div class="alert alert-success text-center" role="alert">
+                     {{ session('status') }}
+                 </div>
+            @endif
             <div class="table-responsive">
                 <div class="row g-3 justify-content-between align-items-center mb-3">
                     <div class="col-auto">
@@ -23,8 +28,9 @@
                             <th>Kategori</th>
                             <th>Nama Sarpras</th>
                             <th>Jumlah</th>
-                            <th>Terpakai</th>
+                            <th>Normal</th>
                             <th>Rusak</th>
+                            <th>Terpakai</th>
                             <th width="15%">Aksi</th>
                         </tr>
                     </thead>
@@ -40,8 +46,9 @@
                             <td>{{$sarpras->kategori->name}}</td>
                             <td>{{$sarpras->nama_sarpras}}</td>
                             <td>{{$sarpras->jumlah_sarpras}}</td>
-                            <td>{{$sarpras->jumlah_terpakai}}</td>
+                            <td>{{$sarpras->jumlah_normal}}</td>
                             <td>{{$sarpras->jumlah_rusak}}</td>
+                            <td>{{$sarpras->jumlah_sarpras - $sarpras->jumlah_normal }}</td>             
                             <td>
                                 <a href="{{route('sarpras.edit', $sarpras['id'])}}" class="btn btn-primary"><i class="fas fa-edit"></i>&nbspEdit</a>
                                 <form action="{{ route('sarpras.destroy', $sarpras->id) }}" onsubmit="return confirm('Apakah anda yakin menghapusnya??')" method="POST" class="d-inline">
@@ -54,7 +61,7 @@
                         @endforeach
                         @else 
                         <tr>
-                            <td colspan="8" class="text-center">
+                            <td colspan="9" class="text-center">
                                 Data Sarana Prasarana Kosong.
                             </td>
                         </tr>

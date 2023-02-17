@@ -20,10 +20,10 @@ class DashboardController extends Controller
         // return view('admin.dashboard.index');
         $siswas = Siswa::all()->count();
         $sarpras = Sarpras::all()->count();
-        $peminjamanes = Peminjaman::all()->count();
-        $pengembalianes = Pengembalian::all()->count();
+        // $peminjamanes = Peminjaman::all()->count();
+        // $pengembalianes = Pengembalian::all()->count();
 
-        return view('admin.dashboard.index', compact('siswas', 'sarpras', 'peminjamanes', 'pengembalianes'));
+        return view('admin.dashboard.index', compact('siswas', 'sarpras'));
     }
 
     /**

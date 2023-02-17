@@ -90,6 +90,12 @@
                 <span>Peminjaman</span></a>
             </li>
 
+            <li class="nav-item @if(Request::is('admin/pengambilan')) active @endif">
+                <a class="nav-link" href="/admin/pengambilan">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Pengambilan</span></a>
+            </li>
+
             <li class="nav-item @if(Request::is('admin/pengembalian')) active @endif">
                 <a class="nav-link" href="/admin/pengembalian">
                 <i class="fas fa-arrow-left"></i>
@@ -103,7 +109,7 @@
                 REPORT
             </div>
 
-            <li class="nav-item @if(Request::is('admin/masterlaporan')) active @endif">
+            <li class="nav-item @if(Request::is('admin/laporan')) active @endif">
                 <a class="nav-link" href="/admin/laporan">
                 <i class="fas fa-solid fa-file-contract"></i>
                 <span>Laporan</span></a>

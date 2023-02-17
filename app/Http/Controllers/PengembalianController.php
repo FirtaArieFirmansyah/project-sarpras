@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Siswa;
+use App\Models\Sarpras;
+use App\Models\Peminjaman;
+use App\Models\Pengambilan;
 use App\Models\Pengembalian;
+use Illuminate\Http\Request;
 
 class PengembalianController extends Controller
 {
@@ -14,8 +18,15 @@ class PengembalianController extends Controller
      */
     public function index()
     {
+        
+        //return view('admin.pengembalian.masterpengembalian');
+        $siswas = Siswa::all();
+        $sarprases = Sarpras::all();
+        $peminjamanes = Peminjaman::all();
+        $pengambilanes = Pengambilan::all();
         $pengembalianes = Pengembalian::all();
-        return view('admin.pengembalian.masterpengembalian', compact('pengembalianes'));
+  
+        return view('admin.pengembalian.masterpengembalian', compact('siswas', 'sarprases', 'peminjamanes', 'pengambilanes', 'pengembalian'));
     }
 
     /**
@@ -25,7 +36,11 @@ class PengembalianController extends Controller
      */
     public function create()
     {
-        return view('admin.pengembalian.tambahpengembalian');
+        //return view('admin.pengembalian.tambahpengembalian');
+        $siswas = Siswa::all();
+        $sarprases = Sarpras::all();
+        $pengambilanes = Pengambilan::all();
+        return view('admin.pengembalian.masterpengembalian', compact('siswas', 'sarprases', 'pengambilanes'));
     }
 
     /**
@@ -37,12 +52,12 @@ class PengembalianController extends Controller
     public function store(Request $request)
     {
         $message = [
-            'required' => ':attribute harus diisi yaa..',
-            'min' => ':attribute minimal :min yaa..',
-            'max' => ':attribute maksimal :max yaa..',
-            'numeric' => ':attribute harus diisi angka yaa..',
-            'mimes' => ':attribute harus bertipe jpg, jpeg, png yaa..',
-            'size' => ':file yang diupload harus maksimal size yaa..',
+            'required' => ':Attribute harus diisi ya !',
+            'min' => ':Attribute minimal :min ya !',
+            'max' => ':Attribute maksimal :max ya !',
+            'numeric' => ':Attribute harus diisi angka ya !',
+            'mimes' => ':Attribute harus bertipe jpg, jpeg, png ya !',
+            'size' => ':File yang diupload harus maksimal size ya !',
             ];
             $validatedData = $request->validate([
                 'nama_sarpras' => 'required',

@@ -108,6 +108,7 @@
     <script src="{{ asset ('template/vendor/datatables/jquery.dataTables.js') }}"></script>
     <script src="{{ asset ('template/vendor/datatables/dataTables.bootstrap4.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
     <script>
         $(document).ready(function() {

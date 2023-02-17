@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KategoriController extends Controller
 {
@@ -16,7 +17,23 @@ class KategoriController extends Controller
     {
         //return view('admin.kategori.masterkategori');
         $kategories = Kategori::paginate(5);
-        return view('admin.kategori.masterkategori', compact('kategories'));
+
+        $fa = DB::table('kategori')->select(DB::raw('MAX(RIGHT(kode,5)) as kode'));
+        $kd = "";
+        if($fa->count()>0)
+        {
+            foreach($fa->get() as $k)
+            {
+                $tmp = ((int)$k->kode)+1;
+                $kd = sprintf("%05s", $tmp);
+            }
+        }
+        else
+        {
+            $kd = "00001";
+        }
+
+        return view('admin.kategori.masterkategori', compact('kategories', 'kd'));
     }
 
     /**
@@ -38,10 +55,12 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $message = [
-            'required' => ':attribute harus diisi yaa..',
-            'min' => ':attribute minimal :min yaa..',
-            'max' => ':attribute maksimal :max yaa..',
-            'numeric' => ':attribute harus diisi angka yaa..',
+            'required' => ':Attribute harus diisi ya !',
+            'min' => ':Attribute minimal :min ya !',
+            'max' => ':Attribute maksimal :max ya !',
+            'numeric' => ':Attribute harus diisi angka ya !',
+            'mimes' => ':Attribute harus bertipe jpg, jpeg, png ya !',
+            'size' => ':File yang diupload harus maksimal size ya !',
             ];
             $validatedData = $request->validate([
                 'kode' => 'required',
@@ -49,7 +68,8 @@ class KategoriController extends Controller
             ], $message );
             
             Kategori::create($validatedData);
-            return redirect('/admin/kategori');
+            //return redirect('/admin/kategori');
+            return redirect()->route('kategori.index')->with('status', 'Kategori sukses ditambahkan !');
     }
 
     /**
@@ -91,7 +111,8 @@ class KategoriController extends Controller
 
         $kategories = Kategori::find($id)
             ->update($validatedData);
-            return redirect('/admin/kategori');
+            //return redirect('/admin/kategori');
+            return redirect()->route('kategori.index')->with('status', 'Kategori sukes diedit !');
     }
 
     /**
@@ -103,6 +124,7 @@ class KategoriController extends Controller
     public function destroy($id)
     {
         Kategori::destroy($id);
-        return redirect('/admin/kategori');
+        //return redirect('/admin/kategori');
+        return redirect()->route('kategori.index')->with('status', 'Kategori sukes dihapus !');
     }
 }

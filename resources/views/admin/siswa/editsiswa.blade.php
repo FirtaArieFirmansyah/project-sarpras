@@ -13,9 +13,9 @@
           @method('PUT')
           <form>
             <div class="form-group">
-              <label for="nisn">NISN</label>
-              <input type="text" class="form-control @error('nisn') is-invalid @enderror" id="nisn" value="{{ $siswa->nisn }}" placeholder="Masukkan nisn siswa.." name="nisn">
-              @error('nisn')
+              <label for="niuj">NIU / J</label>
+              <input type="text" class="form-control @error('niuj') is-invalid @enderror" id="niuj" value="{{ $siswa->niuj }}" placeholder="Masukkan nomor induk umum / jurusan siswa.." name="niuj">
+              @error('niuj')
                 <div class="invalid-feedback">
                   {{ $message }}
                 </div>
@@ -30,18 +30,7 @@
                 </div>
               @enderror
             </div>
-            <div class="mb-3">
-             <label for="jk">Jenis Kelamin</label><br>
-              <select name="jk" class="form-control @error('jk') is-invalid @enderror" id="jk">
-               <option @if($siswa->jk == "Laki-laki") selected @endif value="Laki-laki">Laki - laki</option>
-               <option @if($siswa->jk == "Perempuan") selected @endif value="Perempuan">Perempuan</option>
-              </select>
-              @error('jk')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-              @enderror
-            </div>
+            
             <div class="form-group">
               <label for="kelas">Kelas</label>
               <input type="text" name="kelas" class="form-control @error('kelas') is-invalid @enderror" id="kelas" value="{{ $siswa->kelas }}" placeholder="Masukkan kelas siswa..">
@@ -70,3 +59,16 @@
 </div>
 
 @endsection
+
+{{-- <div class="mb-3">
+  <label for="jk">Jenis Kelamin</label><br>
+   <select name="jk" class="form-control @error('jk') is-invalid @enderror" id="jk">
+    <option @if($siswa->jk == "Laki-laki") selected @endif value="Laki-laki">Laki - laki</option>
+    <option @if($siswa->jk == "Perempuan") selected @endif value="Perempuan">Perempuan</option>
+   </select>
+   @error('jk')
+     <div class="invalid-feedback">
+       {{ $message }}
+     </div>
+   @enderror
+ </div> --}}

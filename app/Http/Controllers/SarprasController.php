@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Models\Sarpras;
+use Illuminate\Support\Facades\DB;
 
 class SarprasController extends Controller
 {
@@ -35,7 +36,23 @@ class SarprasController extends Controller
     public function create()
     {
         $kategories = Kategori::all(['id','kode','name']);
-        return view('admin.sarpras.tambahsarpras',compact('kategories'));
+
+        $fa = DB::table('sarpras')->select(DB::raw('MAX(RIGHT(kode_sarpras,5)) as kode'));
+        $kd = "";
+        if($fa->count()>0)
+        {
+            foreach($fa->get() as $k)
+            {
+                $tmp = ((int)$k->kode)+1;
+                $kd = sprintf("%05s", $tmp);
+            }
+        }
+        else
+        {
+            $kd = "00001";
+        }
+
+        return view('admin.sarpras.tambahsarpras',compact('kategories', 'kd'));
     }
 
     /**
@@ -47,24 +64,25 @@ class SarprasController extends Controller
     public function store(Request $request)
     {
         $message = [
-            'required' => ':attribute harus diisi yaa..',
-            'min' => ':attribute minimal :min yaa..',
-            'max' => ':attribute maksimal :max yaa..',
-            'numeric' => ':attribute harus diisi angka yaa..',
-            'mimes' => ':attribute harus bertipe jpg, jpeg, png yaa..',
-            'size' => ':file yang diupload harus maksimal size yaa..',
+            'required' => ':Attribute harus diisi ya !',
+            'min' => ':Attribute minimal :min ya !',
+            'max' => ':Attribute maksimal :max ya !',
+            'numeric' => ':Attribute harus diisi angka ya !',
+            'mimes' => ':Attribute harus bertipe jpg, jpeg, png ya !',
+            'size' => ':File yang diupload harus maksimal size ya !',
             ];
             $validatedData = $request->validate([
                 'kode_sarpras' => 'required',
                 'kategori_id' => 'required',
                 'nama_sarpras' => 'required',
                 'jumlah_sarpras' => 'required',
-                'jumlah_terpakai' => 'required',
+                'jumlah_normal' => 'required',
                 'jumlah_rusak' => 'required',
             ], $message );
             
             Sarpras::create($validatedData);
-            return redirect('/admin/sarpras');
+            //return redirect('/admin/sarpras');
+            return redirect()->route('sarpras.index')->with('status', 'Sarpras sukses ditambahkan !');
     }
 
     /**
@@ -105,14 +123,15 @@ class SarprasController extends Controller
             'kategori_id' => 'required',
             'nama_sarpras' => 'required',
             'jumlah_sarpras' => 'required',
-            'jumlah_terpakai' => 'required',
+            'jumlah_normal' => 'required',
             'jumlah_rusak' => 'required',
         ]);
 
         $sarprases = Sarpras::find($id)
             ->update($validatedData);
 
-        return redirect('/admin/sarpras');
+        //return redirect('/admin/sarpras');
+        return redirect()->route('sarpras.index')->with('status', 'Sarpras sukes diedit !');
     }
 
     /**
@@ -124,6 +143,8 @@ class SarprasController extends Controller
     public function destroy($id)
     {
         Sarpras::destroy($id);
-        return redirect('admin/sarpras');
+        //return redirect('admin/sarpras');
+        return redirect()->route('sarpras.index')->with('status', 'Sarpras sukes dihapus !');
+
     }
 }
